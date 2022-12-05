@@ -12,3 +12,9 @@ cities_entity.admin.structure.settings:
   description: 'Configure Cities entity entities'
   route_name: cities_entity.settings
   parent: system.admin_structure
+qed_assignment.mapping_interface_form:
+  title: 'MappingInterfaceForm'
+  route_name: qed_assignment.mapping_interface_form
+  description: 'Mapping interface for migration.'
+  parent: system.admin_config_system
+  weight: 99

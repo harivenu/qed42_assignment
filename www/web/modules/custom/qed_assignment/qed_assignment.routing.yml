@@ -1,0 +1,9 @@
+qed_assignment.mapping_interface_form:
+  path: '/admin/config/qed-assignment/mappinginterface'
+  defaults:
+    _form: '\Drupal\qed_assignment\Form\MappingInterfaceForm'
+    _title: 'Mapping Interface'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

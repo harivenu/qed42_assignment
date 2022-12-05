@@ -1,7 +1,11 @@
 # Migration configuration for cities.
 id: cities
 label: Cities
-migration_group: Default
+migration_group: QED42
+
+# Deriver not working.
+# deriver: Drupal\qed_assignment\CityNameDeriver
+
 migration_dependencies: {}
 
 source:
@@ -9,7 +13,7 @@ source:
   data_fetcher_plugin: file
   data_parser_plugin: json
   urls:
-    - 'public://cities.json'
+    - 'modules/custom/qed_assignment/sources/cities.json'
   item_selector: 0
   fields:
     - name: src_id
@@ -35,10 +39,7 @@ destination:
   plugin: entity:cities_entity
 
 process:
-  type:
-    plugin: default_value
-    default_value: product
-
+  # The deriver not working with unknown reason so keeping the name in here.
   name: src_city
   id: src_id
   loc: src_loc
@@ -47,4 +48,4 @@ process:
 
   uid:
     plugin: default_value
-    default_value: 0
+    default_value: 1
