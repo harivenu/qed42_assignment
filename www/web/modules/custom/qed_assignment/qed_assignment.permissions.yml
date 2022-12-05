@@ -1,0 +1,31 @@
+add cities entity entities:
+  title: 'Create new Cities entity entities'
+
+administer cities entity entities:
+  title: 'Administer Cities entity entities'
+  description: 'Allow to access the administration form to configure Cities entity entities.'
+  restrict access: true
+
+delete cities entity entities:
+  title: 'Delete Cities entity entities'
+
+edit cities entity entities:
+  title: 'Edit Cities entity entities'
+
+view published cities entity entities:
+  title: 'View published Cities entity entities'
+
+view unpublished cities entity entities:
+  title: 'View unpublished Cities entity entities'
+
+view all cities entity revisions:
+  title: 'View all Cities entity revisions'
+
+revert all cities entity revisions:
+  title: 'Revert all Cities entity revisions'
+  description: 'Role requires permission <em>view Cities entity revisions</em> and <em>edit rights</em> for cities entity entities in question or <em>administer cities entity entities</em>.'
+
+delete all cities entity revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Cities entity revisions</em> and <em>delete rights</em> for cities entity entities in question or <em>administer cities entity entities</em>.'
+

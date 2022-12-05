@@ -1,0 +1,59 @@
+uuid: 9c1e6693-7fe1-45e3-bc3c-05bff74671b7
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: XGtD4ylormG9w1WVmElw0je9KOYivrL54O_aEaiSCLI
+id: cities
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: Default
+label: Cities
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  urls:
+    - 'public://cities.json'
+  item_selector: 0
+  fields:
+    -
+      name: src_id
+      label: 'Unique ID'
+      selector: _id
+    -
+      name: src_city
+      label: city
+      selector: city
+    -
+      name: src_loc
+      label: Location
+      selector: loc
+    -
+      name: src_pop
+      label: POP
+      selector: pop
+    -
+      name: src_state
+      label: State
+      selector: state
+  ids:
+    src_id:
+      type: integer
+process:
+  type:
+    plugin: default_value
+    default_value: product
+  name: src_city
+  id: src_id
+  loc: src_loc
+  pop: src_pop
+  state: src_state
+  uid:
+    plugin: default_value
+    default_value: 0
+destination:
+  plugin: 'entity:cities_entity'
+migration_dependencies: {  }

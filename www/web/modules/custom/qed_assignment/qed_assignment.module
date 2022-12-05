@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains qed_assignment.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function qed_assignment_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the qed_assignment module.
+    case 'help.page.qed_assignment':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This is for custom development') . '</p>';
+      return $output;
+
+    default:
+  }
+}

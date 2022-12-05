@@ -1,0 +1,13 @@
+{
+    "name": "qed_assignment",
+    "type": "drupal-module",
+    "description": "This is for custom development",
+    "keywords": [
+    ],
+    "homepage": "https://www.drupal.org/project/qed_assignment",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/qed_assignment",
+        "source": "http://cgit.drupalcode.org/qed_assignment"
+    }
+}

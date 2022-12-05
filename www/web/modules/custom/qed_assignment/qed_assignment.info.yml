@@ -1,0 +1,5 @@
+name: 'QED Assignment'
+type: module
+description: 'This is for custom development'
+core_version_requirement: ^9.2 || ^10
+package: 'Custom'

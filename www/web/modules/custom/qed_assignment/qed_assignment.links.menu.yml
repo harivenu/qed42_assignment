@@ -1,0 +1,14 @@
+
+# Cities entity menu items definition
+entity.cities_entity.collection:
+  title: 'Cities entity list'
+  route_name: entity.cities_entity.collection
+  description: 'List Cities entity entities'
+  parent: system.admin_structure
+  weight: 100
+
+cities_entity.admin.structure.settings:
+  title: 'Cities entity settings'
+  description: 'Configure Cities entity entities'
+  route_name: cities_entity.settings
+  parent: system.admin_structure

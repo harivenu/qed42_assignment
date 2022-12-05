@@ -1,0 +1,14 @@
+uuid: 756c1767-1062-4c49-b736-a963baebd8ee
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: vymHlgJy26BuI5GGj9-IXjwR3dRC5C0tij4BpWJnoqw
+id: feedback
+label: 'Website feedback'
+recipients:
+  - hari@applab.qa
+reply: ''
+weight: 0
+message: 'Your message has been sent.'
+redirect: ''

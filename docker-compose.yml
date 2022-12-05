@@ -1,0 +1,94 @@
+version: "3.1"
+services:
+    www:
+        extra_hosts:
+           - "host.docker.internal:host-gateway" 
+        build:
+            context: './containers/apache/'
+            args:
+            # Available [trace|debug|profile]. Use Comma separated available values for multiple mode
+            # Use "off" to disable xdebug
+            #- XDEBUG_MODES=profile,debug,trace
+            - XDEBUG_MODES=off
+            # Set the following values to overwrite the existing settings.
+            # Uncomment the following line and change value.
+            - REMOTE_HOST=host.docker.internal # Host machine IP
+            - REMOTE_PORT=9003 # IDE/Editor's listener port
+            - IDE_KEY=VSCODE # IDE's filter/listener key
+            # App folder name, add NOFOLDER for disable the DocumentRoot rewrite
+            - APP_FOLDER=web
+            # Setup cron, available options [enable|disable]
+            - APP_CRON=disable
+            # Setup memcached, available options [enable|disable]
+            - APP_MEMCACHED=enable
+        ports: 
+            - 80:80
+            - 443:443
+            - 11211:11211
+        volumes:
+            - ./www:/var/www/html/
+            - ./xdebug:/opt/xdebug/
+        links:
+            - db
+            - mailhog
+        networks:
+            - default
+        depends_on:
+           - mailhog
+    db:
+        platform: linux/x86_64
+        build:
+            context: './containers/mysql/'
+        ports: 
+            - "3306:3306"
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_DATABASE: drupal
+            MYSQL_USER: user
+            MYSQL_PASSWORD: test
+            MYSQL_ROOT_PASSWORD: test 
+        volumes:
+            - ./dump:/docker-entrypoint-initdb.d
+            - persistent:/var/lib/mysql
+            - ./containers/mysql:/etc/mysql/conf.d
+        networks:
+            - default
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        links: 
+            - db:db
+        ports:
+            - 8000:80
+        environment:
+            MYSQL_USER: user
+            MYSQL_PASSWORD: test
+            MYSQL_ROOT_PASSWORD: test
+    mailhog:
+        image: mailhog/mailhog
+        ports:
+            - 1025:1025
+            - 8025:8025
+    # varnish:
+    #     image: varnish:stable
+    #     volumes:
+    #       - "./containers/varnish/default.vcl:/etc/varnish/default.vcl"
+    #     ports:
+    #       - "8080:80"
+    #     tmpfs:
+    #       - /var/lib/varnish:exec
+    #     environment:
+    #       - VARNISH_SIZE=1G  
+    #     command: "-p default_keep=300"
+    #     depends_on:
+    #       - "www"
+    mongodb:
+        image: mongo:5.0
+        ports:
+        - 27017:27017
+        # volumes:
+        # - ./mongo:/data/db
+        environment:
+        - MONGO_INITDB_ROOT_USERNAME=mongodb
+        - MONGO_INITDB_ROOT_PASSWORD=mongodb
+volumes:
+    persistent:
