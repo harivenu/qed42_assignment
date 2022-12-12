@@ -4,7 +4,7 @@ label: Cities
 migration_group: QED42
 
 # Deriver not working.
-# deriver: Drupal\qed_assignment\CityNameDeriver
+deriver: Drupal\qed_assignment\CityNameDeriver
 
 migration_dependencies: {}
 
@@ -40,7 +40,7 @@ destination:
 
 process:
   # The deriver not working with unknown reason so keeping the name in here.
-  name: src_city
+  # name: src_city
   id: src_id
   loc: src_loc
   pop: src_pop

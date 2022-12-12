@@ -14,15 +14,19 @@ class CityNameDeriver extends DeriverBase {
    */
   public function getDerivativeDefinitions($base_plugin_definition) {
 
+    $derivative = $base_plugin_definition;
+    
     // Get selected value.
     $config = \Drupal::config('qed_assignment.mappinginterface');
     $destination = $config->get('city_name_map');
 
-    $this->derivatives['process'][$destination] = 'src_city';
+    $derivative['process'][$destination] = 'src_city';
 
     if ($destination != 'name') {
-      $this->derivatives['process']['name'] = 'src_id';
+      $derivative['process']['name'] = 'src_id';
     }
+
+    $this->derivatives['dynamic'] = $derivative;
 
     return $this->derivatives;
   }
